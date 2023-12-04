@@ -483,8 +483,6 @@ class Enemy12(pg.sprite.Sprite): #big guy
     def boomer(self):
         self.kill()
 
-
-
 class Enemy2(pg.sprite.Sprite): # fast one
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
@@ -546,7 +544,7 @@ class Enemy5(pg.sprite.Sprite): # slow guy
             self.image = self.standing_frames[self.current_frame]
             self.rect = self.image.get_rect()
 
-class Enemy9(pg.sprite.Sprite): # :)
+class Enemy9(pg.sprite.Sprite): # diagonal going [idiot]
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
         self.image = enemy9_image
@@ -654,10 +652,8 @@ class Enemy11(pg.sprite.Sprite): #Missiles
     def boomer(self):
         self.kill()
 
-  
 
-
-class Enemy8(pg.sprite.Sprite): # R U N
+class Enemy8(pg.sprite.Sprite): # leggy boi
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
         self.image = enemy8_image
@@ -712,7 +708,7 @@ class Enemy3(pg.sprite.Sprite): # stupid drone thing
         if self.pos_x < -100:
             self.kill()
 
-class Story(pg.sprite.Sprite):
+class Story(pg.sprite.Sprite):  # the legend
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
         self.image = story1
@@ -740,7 +736,7 @@ class Story(pg.sprite.Sprite):
             else:
                 self.kill()
 
-class Story2(pg.sprite.Sprite):
+class Story2(pg.sprite.Sprite): # the legend part 2
     def __init__(self):
         pg.sprite.Sprite.__init__(self)
         self.image = story7

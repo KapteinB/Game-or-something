@@ -125,7 +125,7 @@ while playing:
         player.take_dmg(10)
     hits = pg.sprite.spritecollide(player, bosses, False)
     if hits:
-        #player.hp -= 50
+        #player.hp -= a lot
         player.take_dmg(10)
     
     hits = pg.sprite.groupcollide(bullets, bosses, True, False)
@@ -134,11 +134,11 @@ while playing:
     
     hits2 = pg.sprite.groupcollide(bullets, enemy_sprites, True, True)
     if hits2:
-        score = score + 2500
+        score = score + 250
     
     hits3 = pg.sprite.groupcollide(bullets2, enemy_sprites, False, True)
     if hits3:
-        score = score + 2500
+        score = score + 250
     
     if  score == 100000 and not the_end:
         bg_img = bg_img_apo2
@@ -150,7 +150,7 @@ while playing:
 
     
     if the_end:
-        killcount = killcount + 10
+        killcount = killcount + 1
         if killcount == 500:
             enemy_cap = 20
         if killcount == 1000:
@@ -161,7 +161,7 @@ while playing:
             enemy_cap = 35
         if killcount == 5010:
             the_end = 2
-            
+        
         if killcount == 2500:
             bg_img = bg_img_apo3
             enemy_cap = 40
