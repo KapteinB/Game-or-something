@@ -43,6 +43,7 @@ enemy11_image2 = pg.image.load("Missile.png")
 Ebullet1_image = pg.image.load("ebullet1.jpg")
 bullet_particle1 = pg.image.load("tnt1.png")
 bullet_particle2 = pg.image.load("tnt2.png")
+enemy13_image = pg.image.load("tank.png")
 
 story1 = pg.image.load("story1.png")
 story2 = pg.image.load("story2.png")
@@ -103,6 +104,7 @@ bullet3_image2 = pg.transform.scale(bullet3_image2,(50,50))
 bullet3_image3 = pg.transform.scale(bullet3_image3,(50,50))
 bullet3_image4 = pg.transform.scale(bullet3_image4,(50,50))
 END_image = pg.transform.scale(END_image,(50,100))
+enemy13_image = pg.transform.scale(enemy13_image,(150,150))
 
 
 
@@ -543,6 +545,28 @@ class Enemy5(pg.sprite.Sprite): # slow guy
             self.current_frame = (self.current_frame + 1) % len(self.standing_frames)
             self.image = self.standing_frames[self.current_frame]
             self.rect = self.image.get_rect()
+
+class Enemy12(pg.sprite.Sprite): # Sheilder
+    def __init__(self):
+        pg.sprite.Sprite.__init__(self)
+        self.image = enemy13_image
+        self.rect = self.image.get_rect()
+        self.pos_x = 1900
+        self.pos_y = random.randint(10,1200)
+        self.speed = random.randint(12,13)
+        
+
+    def update(self):
+       
+        self.pos_x -= self.speed
+        self.speed = random.randint(5,6)
+        self.rect.centerx = self.pos_x
+        self.rect.centery = self.pos_y
+        if self.pos_x < -100:
+            self.kill()
+
+    
+        
 
 class Enemy9(pg.sprite.Sprite): # diagonal going [idiot]
     def __init__(self):

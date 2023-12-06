@@ -18,6 +18,7 @@ all_sprites = pg.sprite.Group()
 #    w 
 players = pg.sprite.Group()
 bosses = pg.sprite.Group()
+sheilder = pg.sprite.Group()
 wroomba = pg.sprite.Group()
 bullets = pg.sprite.Group()
 bullets2 = pg.sprite.Group()
@@ -109,6 +110,7 @@ while playing:
     all_sprites.update()
     enemy_sprites.update()
     bosses.update()
+    sheilder.update()
     screen.fill(BLACK)
 
     
@@ -126,10 +128,18 @@ while playing:
     hits = pg.sprite.spritecollide(player, bosses, False)
     if hits:
         #player.hp -= a lot
-        player.take_dmg(10)
+        player.take_dmg(15)
+    hits = pg.sprite.spritecollide(player, sheilder, False)
+    if hits:
+        #player.hp -= a lot
+        player.take_dmg(1)
     
     hits = pg.sprite.groupcollide(bullets, bosses, True, False)
     if hits:
+        pass
+
+    hits4 = pg.sprite.groupcollide(bullets, sheilder, True, False)
+    if hits4:
         pass
     
     hits2 = pg.sprite.groupcollide(bullets, enemy_sprites, True, True)
@@ -185,6 +195,7 @@ while playing:
     enemy_sprites.draw(screen)
     bosses.draw(screen)
     wroomba.draw(screen)
+    sheilder.draw(screen)
 
     keys = pg.key.get_pressed()
     if keys[pg.K_p] and len(bosses) < 1: # oppover
@@ -199,12 +210,12 @@ while playing:
                 elif score >= 40000 and score < 60000:
                     randomness = random.randint(1,8)
                 elif score >= 60000 and score < 80000:
-                    randomness = random.randint(1,9)
+                    randomness = random.randint(1,10)
                 elif score >= 80000:
                     enemy_cap = 15
-                    randomness = random.randint(6,10)
+                    randomness = random.randint(6,11)
                     if len(bosses) == 1:
-                        randomness = random.randint(6,9)
+                        randomness = random.randint(6,10)
                 else:
                     randomness = random.randint(1,5)
                 if randomness == 1:
@@ -235,6 +246,9 @@ while playing:
                     new_enemy = Enemy10()
                     enemy_sprites.add(new_enemy)
                 if randomness == 10:
+                    new_enemy = Enemy12()
+                    sheilder.add(new_enemy)
+                if randomness == 11:
                     new_enemy = Enemy11()
                     bosses.add(new_enemy)
             else:
